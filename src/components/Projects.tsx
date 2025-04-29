@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { AnimatedTitle } from '@/components/AnimatedText';
 import { PROJECTS } from '@/lib/constants';
 import { Card } from '@/components/ui/card';
 import { useScrollAnimation } from '@/lib/useScrollProgress';
-import { GitHub, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ProjectCardProps {
@@ -70,7 +69,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-sm text-gray-300 hover:text-neon-blue transition-colors"
             >
-              <GitHub size={16} />
+              <Github size={16} />
               <span>Code</span>
             </a>
             

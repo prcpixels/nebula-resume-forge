@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { PERSONAL_INFO } from '@/lib/constants';
-import { GitHub, Linkedin, FileText } from 'lucide-react';
+import { Github, Linkedin, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SocialLinksProps {
@@ -19,7 +19,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
     {
       name: 'GitHub',
       url: PERSONAL_INFO.github,
-      icon: <GitHub size={iconSize} />,
+      icon: <Github size={iconSize} />,
     },
     {
       name: 'LinkedIn',
