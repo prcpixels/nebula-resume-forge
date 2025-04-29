@@ -33,16 +33,18 @@ const Hero: React.FC = () => {
             <div className="text-xl md:text-2xl font-sora mb-6 h-12 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
               <TypewriterText
                 texts={[
-                  "Aspiring Software Developer",
-                  "AI/ML Enthusiast", 
-                  "Cloud & Full Stack Dev",
+                  "Aspiring Machine Learning Engineer",
+                  "Cloud & Python Developer", 
+                  "AI Enthusiast",
+                  "Full Stack Web Innovator",
                 ]}
               />
             </div>
             
             <p className="text-gray-300 text-lg mb-8 max-w-lg animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
-              Passionate about creating innovative solutions through code, 
-              specializing in AI/ML, web development, and cloud technologies.
+              Passionate about building intelligent, real-world applications. I specialize in Python, 
+              Cloud Computing, and Deep Learning, with hands-on experience in NLP, computer vision, 
+              and full-stack development.
             </p>
             
             <div className="flex flex-wrap gap-4 mb-8 animate-fade-in-up" style={{ animationDelay: "0.8s" }}>
@@ -58,7 +60,7 @@ const Hero: React.FC = () => {
                 className="border-white/20 hover:border-neon-blue hover:bg-neon-blue/10 transition-all duration-300"
                 asChild
               >
-                <a href={PERSONAL_INFO.resume} target="_blank" rel="noopener noreferrer">
+                <a href={PERSONAL_INFO.resume} target="_blank" rel="noopener noreferrer" download="Puli_Ram_Charan_Tej_Resume.pdf">
                   Download CV
                 </a>
               </Button>
@@ -72,10 +74,17 @@ const Hero: React.FC = () => {
           <div className="lg:flex-1 w-full max-w-md animate-float">
             <div className="relative">
               <div className="glass-card w-full aspect-square rounded-full overflow-hidden border-4 border-black/30 shadow-xl">
-                {/* Replace with avatar when available */}
-                <div className="w-full h-full bg-gradient-to-br from-neon-blue/30 to-neon-purple/30 flex items-center justify-center">
-                  <span className="font-sora text-4xl">P</span>
-                </div>
+                {PERSONAL_INFO.profileImage ? (
+                  <img 
+                    src={PERSONAL_INFO.profileImage} 
+                    alt={PERSONAL_INFO.name} 
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-neon-blue/30 to-neon-purple/30 flex items-center justify-center">
+                    <span className="font-sora text-4xl">P</span>
+                  </div>
+                )}
               </div>
               
               {/* Decorative Elements */}

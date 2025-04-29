@@ -12,13 +12,14 @@ import { useScrollAnimation } from "@/lib/useScrollProgress";
 import ChatbotDialog from "@/components/ChatbotDialog";
 import { MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PERSONAL_INFO } from "@/lib/constants";
 
 const Index = () => {
   useScrollAnimation();
   const [chatbotOpen, setChatbotOpen] = useState(false);
   
   useEffect(() => {
-    document.title = "Puli Ram Charan Tej | Portfolio";
+    document.title = `${PERSONAL_INFO.name} | Portfolio`;
   }, []);
 
   return (

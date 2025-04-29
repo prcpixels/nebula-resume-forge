@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
               <span className="text-white">.</span>
             </div>
             <p className="text-gray-400 text-sm">
-              Aspiring Software Developer | AI/ML Enthusiast | Full Stack Developer
+              Aspiring Machine Learning Engineer | Cloud & Python Developer | AI Enthusiast | Full Stack Web Innovator
             </p>
           </div>
           
@@ -49,8 +49,7 @@ const Footer: React.FC = () => {
       <ChatbotDialog open={chatbotOpen} onOpenChange={setChatbotOpen} />
 
       {/* Add global styles using standard style tag */}
-      <style>
-        {`
+      <style dangerouslySetInnerHTML={{ __html: `
         .typing-indicator {
           display: flex;
           align-items: center;
@@ -106,11 +105,9 @@ const Footer: React.FC = () => {
           background-color: rgba(58, 134, 255, 0.2);
           border-radius: 3px;
         }
-        `}
-      </style>
+      `}} />
     </footer>
   );
 };
 
 export default Footer;
-

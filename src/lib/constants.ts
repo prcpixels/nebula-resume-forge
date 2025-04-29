@@ -1,11 +1,12 @@
 
 export const PERSONAL_INFO = {
   name: "Puli Ram Charan Tej",
-  title: "Aspiring Software Developer",
+  title: "Aspiring Machine Learning Engineer | Cloud & Python Developer | AI Enthusiast | Full Stack Web Innovator",
   email: "ramcharantejpuli@gmail.com",
-  github: "https://github.com/yourusername",
-  linkedin: "https://linkedin.com/in/yourusername",
-  resume: "/resume.pdf", // Will need to be updated once you provide the resume
+  github: "https://github.com/ramcharantejpuli",
+  linkedin: "https://www.linkedin.com/in/ramcharantejpuli/",
+  resume: "https://drive.google.com/uc?export=download&id=1a9lCTKvXTKnRGCFyORqUhV_VufRhkoHG",
+  profileImage: "/lovable-uploads/2784a612-9e5d-4ce6-9d3f-35e6f27c8a13.png"
 };
 
 export const SKILLS = {
@@ -25,7 +26,7 @@ export const PROJECTS = [
     description: "An AI solution that uses deep learning to automatically colorize black and white images with realistic colors.",
     tags: ["OpenCV", "Deep Learning", "Python", "TensorFlow"],
     image: "/placeholder.svg",
-    github: "https://github.com/yourusername/project1",
+    github: "https://github.com/ramcharantejpuli/Colorization.git",
     demo: "#",
   },
   {
@@ -34,7 +35,7 @@ export const PROJECTS = [
     description: "A voice-controlled assistant that uses OpenAI to answer questions, perform tasks, and provide information.",
     tags: ["OpenAI", "Python", "Speech Recognition", "NLP"],
     image: "/placeholder.svg",
-    github: "https://github.com/yourusername/project2",
+    github: "https://github.com/ramcharantejpuli/Hugging_Face_VirtualAI.git",
     demo: "#",
   },
   {
@@ -43,7 +44,7 @@ export const PROJECTS = [
     description: "Comprehensive analysis of Airbnb data to uncover pricing trends, popular locations, and booking patterns.",
     tags: ["Data Analysis", "Python", "Pandas", "Visualization"],
     image: "/placeholder.svg",
-    github: "https://github.com/yourusername/project3",
+    github: "https://github.com/ramcharantejpuli/Airbnb-NYC-EDA.git",
     demo: "#",
   },
   {
@@ -52,7 +53,7 @@ export const PROJECTS = [
     description: "Real-time collaborative code editor with syntax highlighting and execution capabilities.",
     tags: ["Next.js", "WebSockets", "Monaco Editor", "Node.js"],
     image: "/placeholder.svg",
-    github: "https://github.com/yourusername/project4",
+    github: "https://github.com/ramcharantejpuli/online-code-editor.git",
     demo: "#",
   },
 ];
@@ -60,13 +61,13 @@ export const PROJECTS = [
 export const EXPERIENCE = [
   {
     id: 1,
-    company: "Practo",
-    position: "Software Engineering Intern",
-    duration: "January 2024 - Present",
-    description: "Working on health data analysis using machine learning to improve patient outcomes and healthcare delivery.",
+    company: "Practo Technologies Pvt. Ltd.",
+    position: "Intern",
+    duration: "July 2024 - August 2024",
+    description: "Worked on health data analysis to identify factors contributing to heart disease.",
     highlights: [
-      "Developed ML models for analyzing patient data",
-      "Improved data processing pipeline efficiency by 30%",
+      "Analyzed health and demographic data to identify factors contributing to heart disease",
+      "Applied data analysis techniques and visualizations to support decision-making",
       "Collaborated with cross-functional teams to implement new features",
       "Contributed to the backend infrastructure using Python and Django",
     ],
@@ -76,17 +77,24 @@ export const EXPERIENCE = [
 export const EDUCATION = [
   {
     id: 1,
-    degree: "Bachelor of Technology in Computer Science",
-    institution: "Your University Name",
-    duration: "2020 - 2024",
+    degree: "Bachelor of Technology in Computer Science and Engineering",
+    institution: "Lovely Professional University, Jalandhar, Punjab",
+    duration: "Aug 2022 - May 2026",
     description: "Specialized in Artificial Intelligence and Machine Learning with a focus on computer vision and natural language processing.",
   },
   {
     id: 2,
-    degree: "Higher Secondary Education",
-    institution: "Your School Name",
-    duration: "2018 - 2020",
+    degree: "Intermediate - MPC (Maths, Physics, Chemistry)",
+    institution: "Pavitra Co-operative Junior College, Machilipatnam, Andhra Pradesh",
+    duration: "Jun 2020 - May 2022",
     description: "Completed with distinction in Mathematics, Physics, and Computer Science.",
+  },
+  {
+    id: 3,
+    degree: "Matriculation (10th Grade)",
+    institution: "Thrividha EM High School, Nuzvid, Andhra Pradesh",
+    duration: "Jun 2019 - May 2020",
+    description: "Completed with honors.",
   },
 ];
 

@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { MessageSquare, Send, Bot } from 'lucide-react';
-import { PERSONAL_INFO } from '@/lib/constants';
+import { PERSONAL_INFO, SKILLS, EDUCATION, EXPERIENCE, PROJECTS } from '@/lib/constants';
 
 interface Message {
   id: string;
@@ -19,11 +19,12 @@ interface ChatbotDialogProps {
 }
 
 const ChatbotDialog: React.FC<ChatbotDialogProps> = ({ open, onOpenChange }) => {
+  const firstName = PERSONAL_INFO.name.split(' ')[0];
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: `Hi there! I'm ${PERSONAL_INFO.name.split(' ')[0]}'s AI assistant. How can I help you today?`,
+      content: `Hi there! I'm ${firstName}'s AI assistant. How can I help you today?`,
       sender: 'bot',
       timestamp: new Date()
     }
@@ -71,36 +72,81 @@ const ChatbotDialog: React.FC<ChatbotDialogProps> = ({ open, onOpenChange }) => 
     
     // Check for greetings
     if (normalizedMessage.match(/^(hi|hello|hey|greetings|sup|what's up).*/i)) {
-      return `Hello there! I'm ${PERSONAL_INFO.name.split(' ')[0]}'s virtual assistant. How can I help you today?`;
+      return `Hello there! I'm ${firstName}'s virtual assistant. How can I help you today?`;
+    }
+    
+    // Check for questions about personal info
+    if (normalizedMessage.includes('who') || normalizedMessage.includes('tell me about') || normalizedMessage.includes('what is your name') || normalizedMessage.includes('introduce')) {
+      return `${PERSONAL_INFO.name} is an aspiring Machine Learning Engineer passionate about building intelligent, real-world applications. He specializes in Python, Cloud Computing (AWS & Azure), and Deep Learning, with hands-on experience in NLP, computer vision, and full-stack development.`;
     }
     
     // Check for questions about skills
     if (normalizedMessage.includes('skill') || normalizedMessage.includes('tech') || normalizedMessage.includes('technology')) {
-      return `${PERSONAL_INFO.name.split(' ')[0]} is proficient in various technologies including React, Next.js, Python, TensorFlow, and more. Is there a specific skill you'd like to know more about?`;
+      return `${firstName} is proficient in various technologies including:
+      
+Programming: ${SKILLS.programming.join(', ')}
+Frontend: ${SKILLS.frontend.join(', ')}
+Backend: ${SKILLS.backend.join(', ')}
+AI/ML: ${SKILLS.ai_ml.join(', ')}
+Cloud: ${SKILLS.cloud.join(', ')}
+Databases: ${SKILLS.databases.join(', ')}
+
+Is there a specific skill you'd like to know more about?`;
     }
     
     // Check for questions about projects
     if (normalizedMessage.includes('project') || normalizedMessage.includes('portfolio') || normalizedMessage.includes('work')) {
-      return `${PERSONAL_INFO.name.split(' ')[0]} has worked on several exciting projects including image colorization, virtual assistants, data analysis, and web applications. You can check out more details in the Projects section of this portfolio!`;
+      const projectList = PROJECTS.map((project, index) => `${index + 1}. ${project.title}: ${project.description}`).join('\n\n');
+      return `${firstName} has worked on several exciting projects including:
+      
+${projectList}
+
+You can check out more details in the Projects section of this portfolio!`;
     }
     
     // Check for questions about education
-    if (normalizedMessage.includes('education') || normalizedMessage.includes('degree') || normalizedMessage.includes('university') || normalizedMessage.includes('college')) {
-      return `${PERSONAL_INFO.name.split(' ')[0]} has a Bachelor of Technology in Computer Science with a specialization in AI and Machine Learning.`;
+    if (normalizedMessage.includes('education') || normalizedMessage.includes('degree') || normalizedMessage.includes('university') || normalizedMessage.includes('college') || normalizedMessage.includes('study')) {
+      return `${firstName}'s education:
+      
+${EDUCATION[0].degree} at ${EDUCATION[0].institution} (${EDUCATION[0].duration})
+
+${EDUCATION[1].degree} at ${EDUCATION[1].institution} (${EDUCATION[1].duration})
+
+${EDUCATION[2].degree} at ${EDUCATION[2].institution} (${EDUCATION[2].duration})`;
     }
     
     // Check for contact information requests
     if (normalizedMessage.includes('contact') || normalizedMessage.includes('email') || normalizedMessage.includes('reach') || normalizedMessage.includes('hire')) {
-      return `You can contact ${PERSONAL_INFO.name.split(' ')[0]} via email at ${PERSONAL_INFO.email} or through LinkedIn. Would you like me to provide those links?`;
+      return `You can contact ${firstName} via email at ${PERSONAL_INFO.email} or connect on LinkedIn at ${PERSONAL_INFO.linkedin}. Would you like me to provide more information?`;
     }
     
     // Check for experience questions
-    if (normalizedMessage.includes('experience') || normalizedMessage.includes('work history') || normalizedMessage.includes('job')) {
-      return `${PERSONAL_INFO.name.split(' ')[0]} is currently working as a Software Engineering Intern at Practo, focusing on health data analysis using machine learning. Would you like to know more about specific responsibilities?`;
+    if (normalizedMessage.includes('experience') || normalizedMessage.includes('work history') || normalizedMessage.includes('job') || normalizedMessage.includes('intern')) {
+      return `${firstName} has the following work experience:
+      
+${EXPERIENCE[0].position} at ${EXPERIENCE[0].company} (${EXPERIENCE[0].duration})
+
+During this internship, he:
+- ${EXPERIENCE[0].highlights[0]}
+- ${EXPERIENCE[0].highlights[1]}`;
+    }
+
+    // Check for resume requests
+    if (normalizedMessage.includes('resume') || normalizedMessage.includes('cv')) {
+      return `You can download ${firstName}'s resume directly from the "Download CV" button on the homepage. It contains detailed information about his skills, education, and professional experience.`;
+    }
+
+    // Check for interests or hobbies
+    if (normalizedMessage.includes('interest') || normalizedMessage.includes('hobby') || normalizedMessage.includes('passion')) {
+      return `${firstName} is passionate about building intelligent applications, particularly in the field of AI and Machine Learning. He enjoys exploring new technologies, working on computer vision projects, and developing full-stack applications. He's currently focused on advanced AI integration and creating futuristic user experiences.`;
     }
     
     // For other questions
-    return `Thanks for your message! I'll make sure ${PERSONAL_INFO.name.split(' ')[0]} gets it. Is there anything specific you'd like to know about ${PERSONAL_INFO.name.split(' ')[0]}'s skills, projects, or experience?`;
+    return `Thanks for your question about ${normalizedMessage.slice(0, 30)}... 
+
+Based on ${firstName}'s portfolio, he's an aspiring Machine Learning Engineer with expertise in Python, AI/ML, and full-stack development. He's currently pursuing his B.Tech in Computer Science and had an internship at Practo Technologies.
+
+Is there something specific about his skills, education, or projects you'd like to know more about?`;
   };
 
   return (
@@ -110,7 +156,7 @@ const ChatbotDialog: React.FC<ChatbotDialogProps> = ({ open, onOpenChange }) => 
           <DialogTitle className="flex items-center gap-2">
             <Bot className="text-neon-blue" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">
-              {PERSONAL_INFO.name.split(' ')[0]}'s AI Assistant
+              {firstName}'s AI Assistant
             </span>
           </DialogTitle>
         </DialogHeader>
@@ -138,7 +184,7 @@ const ChatbotDialog: React.FC<ChatbotDialogProps> = ({ open, onOpenChange }) => 
                     {msg.sender === 'user' ? 'You' : 'Assistant'}
                   </span>
                 </div>
-                <p className="text-sm">{msg.content}</p>
+                <p className="text-sm whitespace-pre-line">{msg.content}</p>
               </div>
             </div>
           ))}
