@@ -48,8 +48,9 @@ const Footer: React.FC = () => {
       {/* Chatbot Dialog */}
       <ChatbotDialog open={chatbotOpen} onOpenChange={setChatbotOpen} />
 
-      {/* Add global styles for typing indicator */}
-      <style jsx global>{`
+      {/* Add global styles using standard style tag */}
+      <style>
+        {`
         .typing-indicator {
           display: flex;
           align-items: center;
@@ -105,9 +106,11 @@ const Footer: React.FC = () => {
           background-color: rgba(58, 134, 255, 0.2);
           border-radius: 3px;
         }
-      `}</style>
+        `}
+      </style>
     </footer>
   );
 };
 
 export default Footer;
+
