@@ -1,10 +1,12 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import SocialLinks from '@/components/SocialLinks';
 import { PERSONAL_INFO } from '@/lib/constants';
+import ChatbotDialog from '@/components/ChatbotDialog';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const [chatbotOpen, setChatbotOpen] = useState(false);
   
   return (
     <footer className="bg-black/30 py-10 border-t border-white/10 relative overflow-hidden">
@@ -14,9 +16,9 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0 text-center md:text-left">
-            <div className="text-2xl font-sora font-bold mb-2">
+            <div className="text-2xl font-sora font-bold mb-2 flex items-center gap-1">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">
-                {PERSONAL_INFO.name.split(' ')[0]}
+                {PERSONAL_INFO.name}
               </span>
               <span className="text-white">.</span>
             </div>
@@ -27,7 +29,7 @@ const Footer: React.FC = () => {
           
           <div className="mb-6 md:mb-0 flex flex-col items-center md:items-end">
             <p className="text-gray-400 text-sm mb-3">Connect with me</p>
-            <SocialLinks />
+            <SocialLinks onChatbotClick={() => setChatbotOpen(true)} />
           </div>
         </div>
         
@@ -42,6 +44,9 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Chatbot Dialog */}
+      <ChatbotDialog open={chatbotOpen} onOpenChange={setChatbotOpen} />
     </footer>
   );
 };

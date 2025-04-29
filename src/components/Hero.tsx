@@ -25,9 +25,8 @@ const Hero: React.FC = () => {
             </div>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-              <span className="text-white">{PERSONAL_INFO.name.split(' ')[0]}</span>{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">
-                {PERSONAL_INFO.name.split(' ').slice(1).join(' ')}
+                {PERSONAL_INFO.name}
               </span>
             </h1>
             
