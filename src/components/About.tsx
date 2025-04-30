@@ -39,11 +39,13 @@ const About: React.FC = () => {
       <div className="absolute bottom-20 left-[5%] w-96 h-96 bg-neon-blue/10 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto relative z-10">
-        <AnimatedTitle text="About Me" />
+        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center text-white">
+          About <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">Me</span>
+        </h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="scroll-animation opacity-0">
-            <h3 className="text-2xl font-sora mb-6">
+            <h3 className="text-2xl font-sora mb-6 text-white">
               Creating <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">innovative solutions</span> through code
             </h3>
             
@@ -71,7 +73,7 @@ const About: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-medium">Problem Solver</h4>
+                  <h4 className="font-medium text-white">Problem Solver</h4>
                   <p className="text-sm text-gray-400">Creative thinker</p>
                 </div>
               </div>
@@ -83,7 +85,7 @@ const About: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-medium">Team Player</h4>
+                  <h4 className="font-medium text-white">Team Player</h4>
                   <p className="text-sm text-gray-400">Collaborative approach</p>
                 </div>
               </div>
@@ -95,7 +97,7 @@ const About: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-medium">Fast Learner</h4>
+                  <h4 className="font-medium text-white">Fast Learner</h4>
                   <p className="text-sm text-gray-400">Adaptable & curious</p>
                 </div>
               </div>
@@ -103,7 +105,7 @@ const About: React.FC = () => {
           </div>
           
           <div className="scroll-animation opacity-0" style={{ animationDelay: "0.3s" }}>
-            <h3 className="text-2xl font-sora mb-6">
+            <h3 className="text-2xl font-sora mb-6 text-white">
               My <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">Technical Skills</span>
             </h3>
             

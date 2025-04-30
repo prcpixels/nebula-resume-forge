@@ -17,10 +17,9 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0 text-center md:text-left">
             <div className="text-2xl font-sora font-bold mb-2 flex items-center gap-1">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">
+              <span className="text-neon-blue">
                 {PERSONAL_INFO.name}
               </span>
-              <span className="text-white">.</span>
             </div>
             <p className="text-gray-400 text-sm">
               Aspiring Machine Learning Engineer | Cloud & Python Developer | AI Enthusiast | Full Stack Web Innovator
@@ -48,7 +47,7 @@ const Footer: React.FC = () => {
       {/* Chatbot Dialog */}
       <ChatbotDialog open={chatbotOpen} onOpenChange={setChatbotOpen} />
 
-      {/* Add global styles */}
+      {/* Global styles */}
       <style>
         {`
           .typing-indicator {

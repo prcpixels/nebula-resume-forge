@@ -24,9 +24,9 @@ const Hero: React.FC = () => {
               </span>
             </div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 animate-fade-in-up whitespace-nowrap overflow-hidden text-ellipsis" style={{ animationDelay: "0.2s" }}>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">
-                {PERSONAL_INFO.name}
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 animate-fade-in-up w-full" style={{ animationDelay: "0.2s" }}>
+              <span className="text-white">
+                Puli Ram Charan Tej
               </span>
             </h1>
             
@@ -73,7 +73,7 @@ const Hero: React.FC = () => {
           
           <div className="lg:flex-1 w-full max-w-md animate-float lg:ml-8">
             <div className="relative">
-              <div className="glass-card w-full aspect-square rounded-full overflow-hidden border-4 border-black/30 shadow-xl">
+              <div className="glass-card w-full aspect-square rounded-full overflow-hidden border-4 border-white/10 shadow-xl">
                 {PERSONAL_INFO.profileImage ? (
                   <img 
                     src={PERSONAL_INFO.profileImage} 
