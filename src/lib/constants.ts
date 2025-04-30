@@ -25,7 +25,7 @@ export const PROJECTS = [
     title: "B&W Image Colorization",
     description: "An AI solution that uses deep learning to automatically colorize black and white images with realistic colors.",
     tags: ["OpenCV", "Deep Learning", "Python", "TensorFlow"],
-    image: "https://drive.google.com/uc?export=view&id=1p2cggjZl1CkdxPV7ckf6mQdaYiAMA-XF",
+    image: "/lovable-uploads/Colorisation of Black and White Images.png",
     github: "https://github.com/ramcharantejpuli/Colorization.git",
     demo: "#",
   },
@@ -34,7 +34,7 @@ export const PROJECTS = [
     title: "Virtual Assistant",
     description: "A voice-controlled assistant that uses OpenAI to answer questions, perform tasks, and provide information.",
     tags: ["OpenAI", "Python", "Speech Recognition", "NLP"],
-    image: "https://drive.google.com/uc?export=view&id=1kuPBlKBQrqyvVcwdczmjikfPgWkSqL-8",
+    image: "/lovable-uploads/Asistente Virtual de Escritorio.png",
     github: "https://github.com/ramcharantejpuli/Hugging_Face_VirtualAI.git",
     demo: "#",
   },
@@ -43,7 +43,7 @@ export const PROJECTS = [
     title: "Airbnb Data Analysis",
     description: "Comprehensive analysis of Airbnb data to uncover pricing trends, popular locations, and booking patterns.",
     tags: ["Data Analysis", "Python", "Pandas", "Visualization"],
-    image: "https://drive.google.com/uc?export=view&id=19Qe7w9ETtv4gjqJAc-bzF5DKG8bmPSk8",
+    image: "/lovable-uploads/ChatGPT Image Apr 30, 2025, 10_21_00 AM.png",
     github: "https://github.com/ramcharantejpuli/Airbnb-NYC-EDA.git",
     demo: "#",
   },
@@ -52,11 +52,13 @@ export const PROJECTS = [
     title: "Online Code Editor",
     description: "Real-time collaborative code editor with syntax highlighting and execution capabilities.",
     tags: ["Next.js", "WebSockets", "Monaco Editor", "Node.js"],
-    image: "https://drive.google.com/uc?export=view&id=1F3bl6D24A3qPsBM6t9g7KnSLwM8bdCht",
+    image: "/lovable-uploads/Futuristic Code Editor Interface Design.png",
     github: "https://github.com/ramcharantejpuli/online-code-editor.git",
     demo: "#",
   },
 ];
+
+
 
 export const EXPERIENCE = [
   {
