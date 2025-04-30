@@ -3,8 +3,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Send, Bot } from 'lucide-react';
-import { PERSONAL_INFO, SKILLS, EDUCATION, EXPERIENCE, PROJECTS } from '@/lib/constants';
+import { MessageSquare, Send, Bot, Code, Briefcase, GraduationCap, FileText, User } from 'lucide-react';
+import { PERSONAL_INFO, SKILLS, EDUCATION, EXPERIENCE, PROJECTS, CERTIFICATIONS } from '@/lib/constants';
 
 interface Message {
   id: string;
@@ -24,13 +24,20 @@ const ChatbotDialog: React.FC<ChatbotDialogProps> = ({ open, onOpenChange }) => 
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: `Hi there! I'm ${firstName}'s AI assistant. How can I help you today?`,
+      content: `Hello! I'm ${firstName}'s AI assistant. How can I help you today? You can ask me about ${firstName}'s skills, projects, education, or work experience.`,
       sender: 'bot',
       timestamp: new Date()
     }
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [suggestions] = useState([
+    "Tell me about your skills",
+    "What projects have you worked on?",
+    "What's your education background?",
+    "Tell me about your work experience",
+    "What certifications do you have?"
+  ]);
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
@@ -67,86 +74,139 @@ const ChatbotDialog: React.FC<ChatbotDialogProps> = ({ open, onOpenChange }) => 
     }, 1000 + Math.random() * 1000); // Random delay to simulate thinking
   };
 
+  const handleSuggestionClick = (suggestion: string) => {
+    setMessage(suggestion);
+    setTimeout(() => {
+      handleSendMessage();
+    }, 100);
+  };
+
   const generateResponse = (userMessage: string): string => {
     const normalizedMessage = userMessage.toLowerCase();
     
     // Check for greetings
     if (normalizedMessage.match(/^(hi|hello|hey|greetings|sup|what's up).*/i)) {
-      return `Hello there! I'm ${firstName}'s virtual assistant. How can I help you today?`;
+      return `Hello there! I'm ${firstName}'s virtual assistant. How can I help you today? Feel free to ask about ${firstName}'s skills, projects, education, or experience!`;
     }
     
     // Check for questions about personal info
     if (normalizedMessage.includes('who') || normalizedMessage.includes('tell me about') || normalizedMessage.includes('what is your name') || normalizedMessage.includes('introduce')) {
-      return `${PERSONAL_INFO.name} is an aspiring Machine Learning Engineer passionate about building intelligent, real-world applications. He specializes in Python, Cloud Computing (AWS & Azure), and Deep Learning, with hands-on experience in NLP, computer vision, and full-stack development.`;
+      return `${PERSONAL_INFO.name} is an aspiring Machine Learning Engineer passionate about building intelligent, real-world applications. He specializes in Python, Cloud Computing (AWS & Azure), and Deep Learning, with hands-on experience in NLP, computer vision, and full-stack development.
+      
+Would you like to know more about his specific skills or projects?`;
     }
     
     // Check for questions about skills
-    if (normalizedMessage.includes('skill') || normalizedMessage.includes('tech') || normalizedMessage.includes('technology')) {
+    if (normalizedMessage.includes('skill') || normalizedMessage.includes('tech') || normalizedMessage.includes('technology') || normalizedMessage.includes('good at')) {
       return `${firstName} is proficient in various technologies including:
       
-Programming: ${SKILLS.programming.join(', ')}
-Frontend: ${SKILLS.frontend.join(', ')}
-Backend: ${SKILLS.backend.join(', ')}
-AI/ML: ${SKILLS.ai_ml.join(', ')}
-Cloud: ${SKILLS.cloud.join(', ')}
-Databases: ${SKILLS.databases.join(', ')}
+• Programming: ${SKILLS.programming.join(', ')}
+• Frontend: ${SKILLS.frontend.join(', ')}
+• Backend: ${SKILLS.backend.join(', ')}
+• AI/ML: ${SKILLS.ai_ml.join(', ')}
+• Cloud: ${SKILLS.cloud.join(', ')}
+• Databases: ${SKILLS.databases.join(', ')}
 
-Is there a specific skill you'd like to know more about?`;
+His core strengths are in Python development, Machine Learning, and building full-stack web applications. Is there a particular area you'd like to explore further?`;
     }
     
     // Check for questions about projects
-    if (normalizedMessage.includes('project') || normalizedMessage.includes('portfolio') || normalizedMessage.includes('work')) {
-      const projectList = PROJECTS.map((project, index) => `${index + 1}. ${project.title}: ${project.description}`).join('\n\n');
-      return `${firstName} has worked on several exciting projects including:
+    if (normalizedMessage.includes('project') || normalizedMessage.includes('portfolio') || normalizedMessage.includes('work') || normalizedMessage.includes('built')) {
+      let projectInfo = `${firstName} has worked on several exciting projects. Here are some highlights:`;
       
-${projectList}
-
-You can check out more details in the Projects section of this portfolio!`;
+      PROJECTS.forEach((project, index) => {
+        projectInfo += `\n\n• ${project.title}: ${project.description}\n  Technologies: ${project.tags.join(', ')}`;
+      });
+      
+      projectInfo += `\n\nEach of these projects demonstrates his ability to work with different technologies and solve complex problems. Would you like more details on any specific project?`;
+      
+      return projectInfo;
     }
     
     // Check for questions about education
     if (normalizedMessage.includes('education') || normalizedMessage.includes('degree') || normalizedMessage.includes('university') || normalizedMessage.includes('college') || normalizedMessage.includes('study')) {
-      return `${firstName}'s education:
-      
-${EDUCATION[0].degree} at ${EDUCATION[0].institution} (${EDUCATION[0].duration})
+      return `${firstName}'s educational background:
 
-${EDUCATION[1].degree} at ${EDUCATION[1].institution} (${EDUCATION[1].duration})
+• ${EDUCATION[0].degree}
+  ${EDUCATION[0].institution} (${EDUCATION[0].duration})
+  ${EDUCATION[0].description}
 
-${EDUCATION[2].degree} at ${EDUCATION[2].institution} (${EDUCATION[2].duration})`;
+• ${EDUCATION[1].degree}
+  ${EDUCATION[1].institution} (${EDUCATION[1].duration})
+  ${EDUCATION[1].description}
+
+• ${EDUCATION[2].degree}
+  ${EDUCATION[2].institution} (${EDUCATION[2].duration})
+  ${EDUCATION[2].description}
+
+His education has provided him with strong foundations in computer science, AI/ML, and problem-solving skills.`;
     }
     
     // Check for contact information requests
-    if (normalizedMessage.includes('contact') || normalizedMessage.includes('email') || normalizedMessage.includes('reach') || normalizedMessage.includes('hire')) {
-      return `You can contact ${firstName} via email at ${PERSONAL_INFO.email} or connect on LinkedIn at ${PERSONAL_INFO.linkedin}. Would you like me to provide more information?`;
+    if (normalizedMessage.includes('contact') || normalizedMessage.includes('email') || normalizedMessage.includes('reach') || normalizedMessage.includes('hire') || normalizedMessage.includes('connect')) {
+      return `You can contact ${firstName} through:
+
+• Email: ${PERSONAL_INFO.email}
+• LinkedIn: ${PERSONAL_INFO.linkedin}
+• GitHub: ${PERSONAL_INFO.github}
+
+You can also download his resume from the "Download CV" button on this website for more detailed information.`;
     }
     
     // Check for experience questions
     if (normalizedMessage.includes('experience') || normalizedMessage.includes('work history') || normalizedMessage.includes('job') || normalizedMessage.includes('intern')) {
-      return `${firstName} has the following work experience:
-      
-${EXPERIENCE[0].position} at ${EXPERIENCE[0].company} (${EXPERIENCE[0].duration})
+      return `${firstName}'s professional experience includes:
 
-During this internship, he:
-- ${EXPERIENCE[0].highlights[0]}
-- ${EXPERIENCE[0].highlights[1]}`;
+• ${EXPERIENCE[0].position} at ${EXPERIENCE[0].company}
+  ${EXPERIENCE[0].duration}
+  
+  During this role, he:
+  - ${EXPERIENCE[0].highlights[0]}
+  - ${EXPERIENCE[0].highlights[1]}
+  - ${EXPERIENCE[0].highlights[2]}
+  - ${EXPERIENCE[0].highlights[3]}
+
+This experience has helped him develop practical skills in data analysis, teamwork, and real-world problem-solving.`;
     }
 
     // Check for resume requests
     if (normalizedMessage.includes('resume') || normalizedMessage.includes('cv')) {
-      return `You can download ${firstName}'s resume directly from the "Download CV" button on the homepage. It contains detailed information about his skills, education, and professional experience.`;
+      return `You can download ${firstName}'s resume directly from the "Download CV" button in the header section of this website. It contains detailed information about his skills, education, projects, and professional experience.`;
+    }
+
+    // Check for certifications
+    if (normalizedMessage.includes('certification') || normalizedMessage.includes('certificate') || normalizedMessage.includes('course')) {
+      let certInfo = `${firstName} has completed several relevant certifications that demonstrate his commitment to continuous learning:`;
+      
+      CERTIFICATIONS.forEach((cert) => {
+        certInfo += `\n\n• ${cert.title}\n  Issued by ${cert.issuer} (${cert.date})`;
+      });
+      
+      return certInfo + `\n\nThese certifications have helped him develop specialized skills in Python, Azure, networking, and AI/ML.`;
     }
 
     // Check for interests or hobbies
     if (normalizedMessage.includes('interest') || normalizedMessage.includes('hobby') || normalizedMessage.includes('passion')) {
-      return `${firstName} is passionate about building intelligent applications, particularly in the field of AI and Machine Learning. He enjoys exploring new technologies, working on computer vision projects, and developing full-stack applications. He's currently focused on advanced AI integration and creating futuristic user experiences.`;
+      return `${firstName} is passionate about:
+
+• Building intelligent applications that solve real-world problems
+• Exploring cutting-edge AI and Machine Learning technologies
+• Developing full-stack web applications with modern frameworks
+• Computer vision projects and image processing
+• Natural Language Processing and conversational AI
+
+He enjoys learning new technologies and applying them to create innovative solutions.`;
     }
     
     // For other questions
-    return `Thanks for your question about ${normalizedMessage.slice(0, 30)}... 
+    return `Thanks for your question! As ${firstName}'s AI assistant, I can tell you that he's an aspiring Machine Learning Engineer with expertise in:
 
-Based on ${firstName}'s portfolio, he's an aspiring Machine Learning Engineer with expertise in Python, AI/ML, and full-stack development. He's currently pursuing his B.Tech in Computer Science and had an internship at Practo Technologies.
+• Python development and AI/ML technologies
+• Cloud platforms (AWS & Azure)
+• Full-stack web development
+• Data analysis and visualization
 
-Is there something specific about his skills, education, or projects you'd like to know more about?`;
+Currently pursuing a B.Tech in Computer Science with a focus on AI/ML. Would you like to know more about his projects, skills, education, or how to contact him?`;
   };
 
   return (
@@ -178,7 +238,7 @@ Is there something specific about his skills, education, or projects you'd like 
                   {msg.sender === 'bot' ? (
                     <Bot size={16} className="text-neon-blue" />
                   ) : (
-                    <MessageSquare size={16} className="text-neon-purple" />
+                    <User size={16} className="text-neon-purple" />
                   )}
                   <span className="text-xs text-gray-400">
                     {msg.sender === 'user' ? 'You' : 'Assistant'}
@@ -206,6 +266,21 @@ Is there something specific about his skills, education, or projects you'd like 
           )}
           <div ref={messagesEndRef} />
         </div>
+        
+        {/* Quick suggestion buttons */}
+        {messages.length < 3 && (
+          <div className="flex flex-wrap gap-2 mb-4">
+            {suggestions.map((suggestion, index) => (
+              <button
+                key={index}
+                onClick={() => handleSuggestionClick(suggestion)}
+                className="text-xs px-3 py-1.5 rounded-full bg-neon-blue/10 text-neon-blue hover:bg-neon-blue/20 transition-colors border border-neon-blue/30"
+              >
+                {suggestion}
+              </button>
+            ))}
+          </div>
+        )}
         
         <DialogFooter className="flex-shrink-0">
           <div className="flex w-full gap-2">

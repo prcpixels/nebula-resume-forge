@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { AnimatedTitle } from '@/components/AnimatedText';
 import { EXPERIENCE, EDUCATION } from '@/lib/constants';
 import { useScrollAnimation } from '@/lib/useScrollProgress';
 import { cn } from '@/lib/utils';
@@ -73,7 +72,7 @@ const Experience: React.FC = () => {
       <div className="container mx-auto relative z-10">
         <div className="flex items-center gap-3 mb-12">
           <Briefcase className="text-neon-blue h-7 w-7" />
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
+          <h2 className="text-4xl md:text-5xl font-bold">
             Work <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">Experience</span>
           </h2>
         </div>
@@ -96,7 +95,7 @@ const Experience: React.FC = () => {
         <div className="mt-20">
           <div className="flex items-center gap-3 mb-12">
             <GraduationCap className="text-neon-blue h-7 w-7" />
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
+            <h2 className="text-4xl md:text-5xl font-bold">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">Education</span>
             </h2>
           </div>

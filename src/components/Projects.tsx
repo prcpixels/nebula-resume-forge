@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import { AnimatedTitle } from '@/components/AnimatedText';
 import { PROJECTS } from '@/lib/constants';
 import { Card } from '@/components/ui/card';
 import { useScrollAnimation } from '@/lib/useScrollProgress';
@@ -14,6 +13,7 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [imageError, setImageError] = useState(false);
   
   return (
     <div 
@@ -31,9 +31,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         <div className="relative aspect-video overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-dark to-transparent z-10" />
           <img 
-            src={project.image} 
+            src={imageError ? "/placeholder.svg" : project.image} 
             alt={project.title} 
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            onError={() => setImageError(true)}
+            loading="lazy"
           />
         </div>
         
@@ -111,7 +113,7 @@ const Projects: React.FC = () => {
       <div className="container mx-auto relative z-10">
         <div className="flex items-center gap-3 mb-12">
           <Folder className="text-neon-blue h-7 w-7" />
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
+          <h2 className="text-4xl md:text-5xl font-bold">
             Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">Projects</span>
           </h2>
         </div>
