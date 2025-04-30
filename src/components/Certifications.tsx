@@ -4,7 +4,7 @@ import { AnimatedTitle } from '@/components/AnimatedText';
 import { CERTIFICATIONS } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/lib/useScrollProgress';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Certifications: React.FC = () => {
@@ -18,13 +18,16 @@ const Certifications: React.FC = () => {
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-dark to-transparent"></div>
       
       <div className="container mx-auto relative z-10">
-        <AnimatedTitle text="Certifications" />
+        <div className="flex items-center gap-3 mb-4">
+          <FileText className="text-neon-blue h-7 w-7" />
+          <AnimatedTitle text="Certifications" />
+        </div>
         
         <p className="text-gray-300 max-w-2xl mb-12 scroll-animation opacity-0">
           Continuous learning is essential in the rapidly evolving tech industry. Here are some of my recent certifications.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {CERTIFICATIONS.map((cert, index) => (
             <div 
               key={cert.id} 

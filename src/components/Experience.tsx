@@ -4,6 +4,7 @@ import { AnimatedTitle } from '@/components/AnimatedText';
 import { EXPERIENCE, EDUCATION } from '@/lib/constants';
 import { useScrollAnimation } from '@/lib/useScrollProgress';
 import { cn } from '@/lib/utils';
+import { Briefcase, GraduationCap } from 'lucide-react';
 
 interface TimelineItemProps {
   title: string;
@@ -70,7 +71,10 @@ const Experience: React.FC = () => {
       <div className="absolute bottom-20 right-[5%] w-96 h-96 bg-neon-purple/10 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto relative z-10">
-        <AnimatedTitle text="Experience" />
+        <div className="flex items-center gap-3 mb-4">
+          <Briefcase className="text-neon-blue h-7 w-7" />
+          <AnimatedTitle text="Work Experience" />
+        </div>
         
         <div className="flex flex-col">
           {EXPERIENCE.map((exp, index) => (
@@ -88,7 +92,10 @@ const Experience: React.FC = () => {
         </div>
         
         <div className="mt-20">
-          <AnimatedTitle text="Education" />
+          <div className="flex items-center gap-3 mb-4">
+            <GraduationCap className="text-neon-blue h-7 w-7" />
+            <AnimatedTitle text="Education" />
+          </div>
           
           <div className="flex flex-col">
             {EDUCATION.map((edu, index) => (

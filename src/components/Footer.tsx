@@ -48,64 +48,65 @@ const Footer: React.FC = () => {
       {/* Chatbot Dialog */}
       <ChatbotDialog open={chatbotOpen} onOpenChange={setChatbotOpen} />
 
-      {/* Add global styles using standard style tag */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        .typing-indicator {
-          display: flex;
-          align-items: center;
-        }
-        
-        .typing-indicator span {
-          height: 8px;
-          width: 8px;
-          margin-right: 4px;
-          border-radius: 50%;
-          background-color: #3a86ff;
-          display: inline-block;
-          opacity: 0.4;
-        }
-        
-        .typing-indicator span:nth-child(1) {
-          animation: pulse 1s infinite ease-in-out;
-        }
-        
-        .typing-indicator span:nth-child(2) {
-          animation: pulse 1s infinite ease-in-out 0.2s;
-        }
-        
-        .typing-indicator span:nth-child(3) {
-          animation: pulse 1s infinite ease-in-out 0.4s;
-        }
-        
-        @keyframes pulse {
-          0% {
-            transform: scale(1);
+      {/* Add global styles */}
+      <style>
+        {`
+          .typing-indicator {
+            display: flex;
+            align-items: center;
+          }
+          
+          .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            margin-right: 4px;
+            border-radius: 50%;
+            background-color: #3a86ff;
+            display: inline-block;
             opacity: 0.4;
           }
-          50% {
-            transform: scale(1.2);
-            opacity: 1;
+          
+          .typing-indicator span:nth-child(1) {
+            animation: pulse 1s infinite ease-in-out;
           }
-          100% {
-            transform: scale(1);
-            opacity: 0.4;
+          
+          .typing-indicator span:nth-child(2) {
+            animation: pulse 1s infinite ease-in-out 0.2s;
           }
-        }
-        
-        /* Custom scrollbar for chat */
-        .scrollbar-thin::-webkit-scrollbar {
-          width: 5px;
-        }
-        
-        .scrollbar-thin::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        
-        .scrollbar-thin::-webkit-scrollbar-thumb {
-          background-color: rgba(58, 134, 255, 0.2);
-          border-radius: 3px;
-        }
-      `}} />
+          
+          .typing-indicator span:nth-child(3) {
+            animation: pulse 1s infinite ease-in-out 0.4s;
+          }
+          
+          @keyframes pulse {
+            0% {
+              transform: scale(1);
+              opacity: 0.4;
+            }
+            50% {
+              transform: scale(1.2);
+              opacity: 1;
+            }
+            100% {
+              transform: scale(1);
+              opacity: 0.4;
+            }
+          }
+          
+          .scrollbar-thin::-webkit-scrollbar {
+            width: 5px;
+          }
+          
+          .scrollbar-thin::-webkit-scrollbar-track {
+            background: transparent;
+          }
+          
+          .scrollbar-thin::-webkit-scrollbar-thumb {
+            background-color: rgba(58, 134, 255, 0.2);
+            border-radius: 3px;
+          }
+        `}
+      </style>
     </footer>
   );
 };

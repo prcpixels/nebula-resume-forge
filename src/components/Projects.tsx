@@ -1,9 +1,10 @@
+
 import React, { useState } from 'react';
 import { AnimatedTitle } from '@/components/AnimatedText';
 import { PROJECTS } from '@/lib/constants';
 import { Card } from '@/components/ui/card';
 import { useScrollAnimation } from '@/lib/useScrollProgress';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, Folder } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ProjectCardProps {
@@ -108,7 +109,10 @@ const Projects: React.FC = () => {
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-dark to-transparent"></div>
       
       <div className="container mx-auto relative z-10">
-        <AnimatedTitle text="Featured Projects" />
+        <div className="flex items-center gap-3 mb-4">
+          <Folder className="text-neon-blue h-7 w-7" />
+          <AnimatedTitle text="Featured Projects" />
+        </div>
         
         <p className="text-gray-300 max-w-2xl mb-12 scroll-animation opacity-0">
           Here are some of my recent projects showcasing my skills in software development, 
