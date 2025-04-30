@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0 text-center md:text-left">
             <div className="text-2xl font-sora font-bold mb-2 flex items-center gap-1">
-              <span className="text-neon-blue">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">
                 {PERSONAL_INFO.name}
               </span>
             </div>

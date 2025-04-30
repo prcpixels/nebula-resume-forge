@@ -51,11 +51,16 @@ const Contact: React.FC = () => {
       <div className="absolute bottom-20 left-[5%] w-96 h-96 bg-neon-purple/10 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto relative z-10">
-        <AnimatedTitle text="Let's Connect" />
+        <div className="flex items-center gap-3 mb-12">
+          <Send className="text-neon-blue h-7 w-7" />
+          <h2 className="text-4xl md:text-5xl font-bold text-white">
+            Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">Connect</span>
+          </h2>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="scroll-animation opacity-0">
-            <h3 className="text-2xl font-sora mb-6">
+            <h3 className="text-2xl font-sora mb-6 text-white">
               Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">Touch</span>
             </h3>
             

@@ -71,9 +71,11 @@ const Experience: React.FC = () => {
       <div className="absolute bottom-20 right-[5%] w-96 h-96 bg-neon-purple/10 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto relative z-10">
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3 mb-12">
           <Briefcase className="text-neon-blue h-7 w-7" />
-          <AnimatedTitle text="Work Experience" />
+          <h2 className="text-4xl md:text-5xl font-bold text-white">
+            Work <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">Experience</span>
+          </h2>
         </div>
         
         <div className="flex flex-col">
@@ -92,9 +94,11 @@ const Experience: React.FC = () => {
         </div>
         
         <div className="mt-20">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-12">
             <GraduationCap className="text-neon-blue h-7 w-7" />
-            <AnimatedTitle text="Education" />
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">Education</span>
+            </h2>
           </div>
           
           <div className="flex flex-col">

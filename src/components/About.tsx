@@ -39,9 +39,14 @@ const About: React.FC = () => {
       <div className="absolute bottom-20 left-[5%] w-96 h-96 bg-neon-blue/10 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto relative z-10">
-        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center text-white">
-          About <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">Me</span>
-        </h2>
+        <div className="flex items-center gap-3 mb-12">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-neon-blue" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+          </svg>
+          <h2 className="text-4xl md:text-5xl font-bold text-white">
+            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">Me</span>
+          </h2>
+        </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="scroll-animation opacity-0">

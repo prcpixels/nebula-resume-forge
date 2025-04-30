@@ -109,9 +109,11 @@ const Projects: React.FC = () => {
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-dark to-transparent"></div>
       
       <div className="container mx-auto relative z-10">
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3 mb-12">
           <Folder className="text-neon-blue h-7 w-7" />
-          <AnimatedTitle text="Featured Projects" />
+          <h2 className="text-4xl md:text-5xl font-bold text-white">
+            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">Projects</span>
+          </h2>
         </div>
         
         <p className="text-gray-300 max-w-2xl mb-12 scroll-animation opacity-0">
