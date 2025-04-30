@@ -48,7 +48,8 @@ const Footer: React.FC = () => {
       <ChatbotDialog open={chatbotOpen} onOpenChange={setChatbotOpen} />
 
       {/* Global styles */}
-      <style jsx>{`
+      <style>
+        {`
         .typing-indicator {
           display: flex;
           align-items: center;
@@ -103,7 +104,8 @@ const Footer: React.FC = () => {
           background-color: rgba(58, 134, 255, 0.2);
           border-radius: 3px;
         }
-      `}</style>
+        `}
+      </style>
     </footer>
   );
 };

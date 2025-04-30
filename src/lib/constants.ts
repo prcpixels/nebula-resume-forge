@@ -98,6 +98,7 @@ export const EDUCATION = [
   },
 ];
 
+// Sorted by date, most recent first
 export const CERTIFICATIONS = [
   {
     id: 1,
@@ -111,7 +112,7 @@ export const CERTIFICATIONS = [
     title: "Microsoft Azure Machine Learning Fundamentals",
     issuer: "LinkedIn Learning",
     date: "August 2024",
-    url: "https://www.linkedin.com/learning/certificates/2cec55c65e7cdea052aeb86df94c44b6f9cab8165b5a040e20e7ab42bf62bf77?trk=share_certificate",
+    url: "https://www.linkedin.com/learning/certificates/2cec55c65e7cdea052aeb86df94c44b6f9cab8165b5a040e20e7ab42bf62bf77",
   },
   {
     id: 3,
